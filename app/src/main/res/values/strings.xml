@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name" translatable="false">BLABrrr</string>
+    <string name="creator" translatable="false">By Raymond R</string>
+
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <!-- common -->
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Log In</string>
     <string name="OK">OK</string>
+
+    <!-- LandingActivity -->
+    <string name="landing_info">See What\'s Going on\nAround You in</string>
 
 
 </resources>

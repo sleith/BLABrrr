@@ -1,14 +1,16 @@
 package com.fatdino.blabrrr.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.fatdino.blabrrr.R
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
 abstract class BaseActivity : AppCompatActivity() {
-    var mHasBackButton = true
+    protected var mHasBackButton = true
     lateinit var mViewModel: BaseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +30,10 @@ abstract class BaseActivity : AppCompatActivity() {
                 showSimpleDialog(null, getString(resId))
             }
         })
+
+        setupViews()
+        setupObservers()
+        mViewModel.start(this)
     }
 
     fun showSimpleDialog(title: String?, message: String) {
@@ -49,6 +55,18 @@ abstract class BaseActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
+        } else {
+            super.attachBaseContext(newBase)
+        }
+    }
+
+    abstract fun setupViews()
+
+    abstract fun setupObservers()
 
     abstract fun getViewModel(): BaseViewModel
 
