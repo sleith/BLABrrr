@@ -7,8 +7,9 @@
     <string name="fontExtraBold" translatable="false">fonts/Gilroy-ExtraBold.otf</string>
 
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_search">Search</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_inbox">Inbox</string>
 
     <!-- common -->
     <string name="sign_up">Sign Up</string>

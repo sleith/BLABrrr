@@ -1,4 +1,4 @@
-package com.fatdino.blabrrr.ui.notifications
+package com.fatdino.blabrrr.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,22 +7,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
-import com.fatdino.blabrrr.databinding.FragmentNotificationsBinding
+import com.fatdino.blabrrr.databinding.FragmentSearchBinding
 import com.fatdino.blabrrr.ui.BaseFragment
 import com.fatdino.blabrrr.ui.BaseViewModel
 
-class NotificationsFragment : BaseFragment() {
+class SearchFragment : BaseFragment() {
 
-    lateinit var viewModel: NotificationsFragmentViewModel
+    lateinit var viewModel: SearchFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = mViewModel as NotificationsFragmentViewModel
-        val binding: FragmentNotificationsBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_notifications, container, false
+        viewModel = mViewModel as SearchFragmentViewModel
+        val binding: FragmentSearchBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_search, container, false
         )
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -35,7 +35,6 @@ class NotificationsFragment : BaseFragment() {
     }
 
     override fun getViewModel(): BaseViewModel {
-        return ViewModelProvider(this).get(NotificationsFragmentViewModel::class.java)
+        return ViewModelProvider(this).get(SearchFragmentViewModel::class.java)
     }
-
 }
