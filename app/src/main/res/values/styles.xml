@@ -88,4 +88,10 @@
         <item name="android:textColor">#ffffff</item>
         <item name="fontPath">@string/fontBold</item>
     </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#1D1F23</item>
+    </style>
 </resources>

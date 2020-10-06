@@ -1,5 +1,6 @@
 package com.fatdino.blabrrr.ui.main
 
+import android.content.Intent
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -8,7 +9,9 @@ import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.ActivityMainBinding
 import com.fatdino.blabrrr.ui.BaseActivity
 import com.fatdino.blabrrr.ui.BaseViewModel
+import com.fatdino.blabrrr.ui.post.PostActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
@@ -25,6 +28,10 @@ class MainActivity : BaseActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
+
+        ibPost.setOnClickListener {
+            startActivity(Intent(this, PostActivity::class.java))
+        }
     }
 
     override fun setupObservers() {

@@ -21,6 +21,7 @@
     <string name="username">Username</string>
     <string name="OK">OK</string>
     <string name="continue_">Continue</string>
+    <string name="post">Post</string>
 
     <!-- LandingActivity -->
     <string name="landing_info">See What\'s Going on\n\nAround You in</string>
@@ -31,4 +32,10 @@
 
     <!-- LoginActivity -->
     <string name="login_welcome">Welcome Back!</string>
+
+    <!-- PostActivity -->
+    <string name="post_info">What\'s Going On?</string>
+    <string name="post_hint">Write to the world here</string>
+
+
 </resources>

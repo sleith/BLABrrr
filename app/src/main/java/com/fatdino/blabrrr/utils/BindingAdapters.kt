@@ -30,3 +30,14 @@ fun setImageFile(view: ImageView, file: File?) {
     Glide.with(view).load(file).placeholder(R.drawable.ic_emptyprofile)
         .error(R.drawable.ic_emptyprofile).into(view)
 }
+
+@BindingAdapter("imageFileHideIfNull")
+fun setImageFileHideIfNull(view: ImageView, file: File?) {
+    if (file != null) {
+        Glide.with(view).load(file).placeholder(R.drawable.ic_emptyprofile)
+            .error(R.drawable.ic_emptyprofile).into(view)
+        view.visibility = View.VISIBLE
+    } else {
+        view.visibility = View.GONE
+    }
+}
