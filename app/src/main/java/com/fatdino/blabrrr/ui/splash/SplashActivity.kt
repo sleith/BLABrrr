@@ -24,6 +24,7 @@ class SplashActivity : BaseActivity() {
         viewModel = mViewModel as SplashActivityViewModel
         val binding: ActivitySplashBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_splash)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
     }
 

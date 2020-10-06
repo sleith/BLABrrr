@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.fatdino.blabrrr.ui.signup.SignUpStep2ViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/ibBack"
+            style="@style/ButtonBackArrowWhite"
+            android:layout_margin="@dimen/padding" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/padding_big"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding">
+
+                <TextView
+                    style="@style/TextWhite.Big.Bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_account" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_big2"
+                    android:hint="@string/name"
+                    android:padding="@dimen/padding_inputtext"
+                    android:theme="@style/TextInputLayoutAppearance">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/TextInputEditTextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding"
+                    android:hint="@string/password"
+                    android:padding="@dimen/padding_inputtext"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/colorAccent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/TextInputEditTextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding"
+                    android:hint="@string/date_of_birth"
+                    android:padding="@dimen/padding_inputtext"
+                    android:theme="@style/TextInputLayoutAppearance">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/TextInputEditTextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnSgnUp"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_marginTop="@dimen/padding_big"
+            android:layout_marginRight="@dimen/padding"
+            android:layout_marginBottom="@dimen/padding_big2"
+            android:text="@string/sign_up" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bg_loginregister" />
+    </LinearLayout>
+</layout>

@@ -2,6 +2,10 @@
     <string name="app_name" translatable="false">BLABrrr</string>
     <string name="creator" translatable="false">By Raymond R</string>
 
+    <!--fonts-->
+    <string name="fontBold" translatable="false">fonts/Gilroy-Bold.ttf</string>
+    <string name="fontExtraBold" translatable="false">fonts/Gilroy-ExtraBold.otf</string>
+
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -9,10 +13,21 @@
     <!-- common -->
     <string name="sign_up">Sign Up</string>
     <string name="login">Log In</string>
+    <string name="create_account">Create Account</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="username">Username</string>
     <string name="OK">OK</string>
+    <string name="continue_">Continue</string>
 
     <!-- LandingActivity -->
-    <string name="landing_info">See What\'s Going on\nAround You in</string>
+    <string name="landing_info">See What\'s Going on\n\nAround You in</string>
 
+    <!-- SignUpStep1Activity -->
+    <string name="sus1_info">Show the world\n\nwho you are!</string>
+    <string name="sus1_add_picture">Add Picture</string>
 
+    <!-- LoginActivity -->
+    <string name="login_welcome">Welcome Back!</string>
 </resources>

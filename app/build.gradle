@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -34,7 +35,9 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+repositories {
+    maven { url "https://jitpack.io" }
+}
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -55,4 +58,18 @@ dependencies {
     /* caligraphy - https://github.com/InflationX/Calligraphy */
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
+
+    /* Image picker - https://github.com/jkwiecien/EasyImage*/
+    implementation 'com.github.jkwiecien:EasyImage:3.0.3'
+
+    /* Image cropper - https://github.com/ArthurHub/Android-Image-Cropper */
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+
+    /* Image loader - https://github.com/bumptech/glide */
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    /* Circle ImageView - https://github.com/hdodenhof/CircleImageView */
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

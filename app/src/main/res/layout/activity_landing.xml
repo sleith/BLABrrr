@@ -48,6 +48,7 @@
             android:padding="@dimen/padding">
 
             <Button
+                android:id="@+id/btnSignUp"
                 style="@style/ButtonPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,6 +56,7 @@
                 android:text="@string/sign_up" />
 
             <Button
+                android:id="@+id/btnLogin"
                 style="@style/ButtonWhite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
