@@ -43,6 +43,8 @@
     <!-- PostActivity -->
     <string name="post_info">What\'s Going On?</string>
     <string name="post_hint">Write to the world here</string>
+    <string name="post_error_empty_message">Please input your message</string>
+    <string name="post_success">Posted to the world!</string>
 
 
 </resources>

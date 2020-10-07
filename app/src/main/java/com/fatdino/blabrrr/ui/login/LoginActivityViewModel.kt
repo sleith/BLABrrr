@@ -57,9 +57,9 @@ class LoginActivityViewModel : BaseViewModel() {
                         myPreferences.username = username.value
                         myPreferences.password = password.value
 
-                        callbackLogin.value = it?.user
+                        callbackLogin.value = it.user
                     } else {
-                        errorMessage.value = it?.description
+                        errorMessage.value = it.description
                     }
                 }
         )

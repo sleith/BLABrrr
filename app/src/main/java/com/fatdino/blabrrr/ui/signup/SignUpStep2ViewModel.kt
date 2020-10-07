@@ -62,9 +62,9 @@ class SignUpStep2ViewModel : BaseViewModel() {
                         myPreferences.username = username.value
                         myPreferences.password = password.value
 
-                        callbackRegister.value = it?.user
+                        callbackRegister.value = it.user
                     } else {
-                        errorMessage.value = it?.description
+                        errorMessage.value = it.description
                     }
                 }
         )

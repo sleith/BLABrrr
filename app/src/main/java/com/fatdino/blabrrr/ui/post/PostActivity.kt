@@ -6,8 +6,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.configs.Configs
@@ -50,10 +52,20 @@ class PostActivity : BaseActivity() {
                 showImagePicker()
             }
         }
+
+        btnPost.setOnClickListener {
+            viewModel.doPost()
+        }
     }
 
     override fun setupObservers() {
-
+        viewModel.callbackPost.observe(this, Observer {
+            it?.let { _ ->
+                Toast.makeText(this, getString(R.string.post_success), Toast.LENGTH_LONG).show()
+                setResult(RESULT_OK)
+                finish()
+            }
+        })
     }
 
     override fun getViewModel(): BaseViewModel {

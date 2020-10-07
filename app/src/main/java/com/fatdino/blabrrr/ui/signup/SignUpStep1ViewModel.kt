@@ -47,7 +47,7 @@ class SignUpStep1ViewModel : BaseViewModel() {
                     if (it.isSuccessful) {
                         callbackIsUsernameAvailable.value = it.isAvailable
                     } else {
-                        errorMessage.value = it?.description
+                        errorMessage.value = it.description
                     }
                 }
         )
