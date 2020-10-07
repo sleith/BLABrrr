@@ -22,6 +22,7 @@
     <string name="OK">OK</string>
     <string name="continue_">Continue</string>
     <string name="post">Post</string>
+    <string name="loading...">Loading...</string>
 
     <!-- LandingActivity -->
     <string name="landing_info">See What\'s Going on\n\nAround You in</string>
@@ -29,6 +30,12 @@
     <!-- SignUpStep1Activity -->
     <string name="sus1_info">Show the world\n\nwho you are!</string>
     <string name="sus1_add_picture">Add Picture</string>
+    <string name="sus1_err_username_exists">Username is not available. Please choose other username</string>
+    <string name="sus1_err_username_empty">Please input username first</string>
+
+    <!-- SignUpStep2Activity -->
+    <string name="sus2_err_name_empty">Please input your name</string>
+    <string name="sus2_err_password_empty">Please input your password</string>
 
     <!-- LoginActivity -->
     <string name="login_welcome">Welcome Back!</string>

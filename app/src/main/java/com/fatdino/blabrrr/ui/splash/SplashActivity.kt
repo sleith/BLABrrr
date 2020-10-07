@@ -7,9 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.ActivitySplashBinding
+import com.fatdino.blabrrr.injection.component.DaggerViewModelComponent
+import com.fatdino.blabrrr.injection.module.ServiceModule
+import com.fatdino.blabrrr.injection.module.StorageModule
 import com.fatdino.blabrrr.ui.BaseActivity
 import com.fatdino.blabrrr.ui.BaseViewModel
 import com.fatdino.blabrrr.ui.landing.LandingActivity
+import com.fatdino.blabrrr.ui.main.MainActivity
 
 class SplashActivity : BaseActivity() {
 
@@ -26,11 +30,19 @@ class SplashActivity : BaseActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_splash)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        val injector =
+            DaggerViewModelComponent.builder().serviceModule(ServiceModule()).storageModule(
+                StorageModule(this)
+            ).build()
+        injector.inject(viewModel)
     }
 
     override fun setupObservers() {
-        viewModel.mCallbackSplashTimedout.observe(this, Observer {
+        viewModel.mCallbackSplashTimedOut.observe(this, Observer {
             if (it) {
+                startActivity(Intent(this, MainActivity::class.java))
+            } else {
                 startActivity(Intent(this, LandingActivity::class.java))
             }
         })

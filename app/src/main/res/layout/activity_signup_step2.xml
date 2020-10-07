@@ -38,6 +38,12 @@
                     style="@style/TextWhite.Big.Bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{`Hi ` + viewModel.username + `!`}" />
+
+                <TextView
+                    style="@style/TextWhite.Big"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/create_account" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +57,10 @@
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/TextInputEditTextAppearance"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:singleLine="true"
+                        android:text="@={viewModel.name}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -68,24 +77,9 @@
                         style="@style/TextInputEditTextAppearance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:text="@={viewModel.password}" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding"
-                    android:hint="@string/date_of_birth"
-                    android:padding="@dimen/padding_inputtext"
-                    android:theme="@style/TextInputLayoutAppearance">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        style="@style/TextInputEditTextAppearance"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.textfield.TextInputLayout>
-
 
             </LinearLayout>
         </ScrollView>

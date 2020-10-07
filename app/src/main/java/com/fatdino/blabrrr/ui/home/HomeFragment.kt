@@ -8,6 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.FragmentHomeBinding
+import com.fatdino.blabrrr.injection.component.DaggerViewModelComponent
+import com.fatdino.blabrrr.injection.module.ServiceModule
+import com.fatdino.blabrrr.injection.module.StorageModule
 import com.fatdino.blabrrr.ui.BaseFragment
 import com.fatdino.blabrrr.ui.BaseViewModel
 
@@ -26,6 +29,12 @@ class HomeFragment : BaseFragment() {
         )
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        val injector =
+            DaggerViewModelComponent.builder().serviceModule(ServiceModule()).storageModule(
+                StorageModule(requireContext())
+            ).build()
+        injector.inject(viewModel)
 
         return binding.root
     }

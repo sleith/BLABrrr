@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.configs.Configs
 import com.fatdino.blabrrr.databinding.ActivitySignupStep1Binding
+import com.fatdino.blabrrr.injection.component.DaggerViewModelComponent
+import com.fatdino.blabrrr.injection.module.ServiceModule
+import com.fatdino.blabrrr.injection.module.StorageModule
 import com.fatdino.blabrrr.ui.BaseActivity
 import com.fatdino.blabrrr.ui.BaseViewModel
 import com.theartofdev.edmodo.cropper.CropImage
@@ -37,12 +40,18 @@ class SignUpStep1Activity : BaseActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        val injector =
+            DaggerViewModelComponent.builder().serviceModule(ServiceModule()).storageModule(
+                StorageModule(this)
+            ).build()
+        injector.inject(viewModel)
+
         ibBack.setOnClickListener {
             finish()
         }
 
         btnContinue.setOnClickListener {
-            startActivity(Intent(this, SignUpStep2Activity::class.java))
+            viewModel.checkUsernameAvailability()
         }
 
         llAddPicture.setOnClickListener {
@@ -53,7 +62,21 @@ class SignUpStep1Activity : BaseActivity() {
     }
 
     override fun setupObservers() {
-
+        viewModel.callbackIsUsernameAvailable.observe(this, {
+            if (it) {
+                viewModel.username.value?.let { username ->
+                    startActivity(
+                        SignUpStep2Activity.generateIntent(
+                            this,
+                            username,
+                            viewModel.imageFile.value
+                        )
+                    )
+                }
+            } else {
+                showSimpleDialog(null, getString(R.string.sus1_err_username_exists))
+            }
+        })
     }
 
     override fun getViewModel(): BaseViewModel {
@@ -135,8 +158,6 @@ class SignUpStep1Activity : BaseActivity() {
                 override fun onMediaFilesPicked(imageFiles: Array<MediaFile>, source: MediaSource) {
                     var mediaFile = imageFiles[0]
                     val file = mediaFile.file
-
-                    viewModel.imageFileName.value = file.name
 
                     CropImage.activity(Uri.fromFile(file))
                         .setRequestedSize(Configs.MAX_IMAGE_SIZE, Configs.MAX_IMAGE_SIZE)

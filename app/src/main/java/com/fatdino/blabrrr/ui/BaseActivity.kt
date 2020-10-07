@@ -7,16 +7,21 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.fatdino.blabrrr.R
+import com.fatdino.blabrrr.utils.DialogLoading
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
 abstract class BaseActivity : AppCompatActivity() {
     protected var mHasBackButton = true
     lateinit var mViewModel: BaseViewModel
 
+    lateinit var mLoading: DialogLoading
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(mHasBackButton)
+
+        mLoading = DialogLoading(this)
         mViewModel = getViewModel()
 
         mViewModel.errorMessage.observe(this, Observer {
@@ -31,19 +36,39 @@ abstract class BaseActivity : AppCompatActivity() {
             }
         })
 
+        mViewModel.loadingVisibility.observe(this, Observer {
+            if (it) {
+                showWait()
+            } else {
+                hideWait()
+            }
+        })
+
         setupViews()
         setupObservers()
         mViewModel.start(this)
     }
 
     fun showSimpleDialog(title: String?, message: String) {
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this, R.style.MyDialog)
         if (title != null) {
             builder.setTitle(title)
         }
         builder.setMessage(message)
         builder.setPositiveButton(getString(R.string.OK), null)
         builder.create().show()
+    }
+
+    fun showWait() {
+        showWait(getString(R.string.loading___))
+    }
+
+    fun showWait(message: String) {
+        mLoading.show(message)
+    }
+
+    fun hideWait() {
+        mLoading.dismiss()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
