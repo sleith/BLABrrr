@@ -1,0 +1,50 @@
+<resources>
+    <string name="title_home">ホーム</string>
+    <string name="title_search">探す</string>
+    <string name="title_notifications">通知</string>
+    <string name="title_inbox">受信トレイ</string>
+
+    <!-- common -->
+    <string name="sign_up">サインアップ</string>
+    <string name="login">ログイン</string>
+    <string name="create_account">アカウントを作成する</string>
+    <string name="name">名前</string>
+    <string name="password">パスワード</string>
+    <string name="date_of_birth">生年月日</string>
+    <string name="username">ユーザー名</string>
+    <string name="OK">OK</string>
+    <string name="continue_">継続する</string>
+    <string name="post">役職</string>
+    <string name="loading...">読み込み中…</string>
+    <string name="logout">ログアウト</string>
+    <string name="delete">削除</string>
+    <string name="cancel">キャンセル</string>
+
+    <!-- LandingActivity -->
+    <string name="landing_info">何が起こっているかを見る\n\nあなたの周り</string>
+
+    <!-- SignUpStep1Activity -->
+    <string name="sus1_info">世界に見せて\n\nあなたは誰ですか!</string>
+    <string name="sus1_add_picture">写真を追加</string>
+    <string name="sus1_err_username_exists">そのユーザー名は使用できません。 他のユーザー名を選択してください</string>
+    <string name="sus1_err_username_empty">最初にユーザー名を入力してください</string>
+
+    <!-- SignUpStep2Activity -->
+    <string name="sus2_err_name_empty">名前を入力してください</string>
+    <string name="sus2_err_password_empty">パスワードを入力してください</string>
+
+    <!-- LoginActivity -->
+    <string name="login_welcome">お帰りなさい!</string>
+
+    <!-- PostActivity -->
+    <string name="post_info">どうしたの？</string>
+    <string name="post_hint">ここで世界に手紙を書く</string>
+    <string name="post_error_empty_message">メッセージを入力してください</string>
+    <string name="post_success">世界に投稿！</string>
+
+    <!-- MyPostActivity -->
+    <string name="mypost_title">私の投稿</string>
+    <string name="mypost_delete_confirmation_message">この投稿を削除してもよろしいですか?</string>
+    <string name="mypost_empty">まだ投稿はありません</string>
+
+</resources>

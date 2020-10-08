@@ -22,7 +22,7 @@
     <string name="OK">OK</string>
     <string name="continue_">Continue</string>
     <string name="post">Post</string>
-    <string name="loading...">Loading...</string>
+    <string name="loading...">Loading…</string>
     <string name="logout">Log Out</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
