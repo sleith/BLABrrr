@@ -15,8 +15,8 @@
         android:padding="@dimen/padding">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/logo_text_bar_width"
-            android:layout_height="@dimen/logo_text_bar_height"
+            android:layout_width="@dimen/user_image_smaller"
+            android:layout_height="@dimen/user_image_smaller"
             android:layout_marginRight="@dimen/padding"
             android:src="@drawable/ic_logo" />
 
