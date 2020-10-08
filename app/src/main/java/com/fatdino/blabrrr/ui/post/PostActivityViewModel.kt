@@ -41,7 +41,7 @@ class PostActivityViewModel : BaseViewModel() {
             postService.doPost(
                 username ?: "",
                 message.value ?: "",
-                null
+                imageFile.value
             ).subscribeOn(Schedulers.io())
                 .observeOn(
                     AndroidSchedulers.mainThread()

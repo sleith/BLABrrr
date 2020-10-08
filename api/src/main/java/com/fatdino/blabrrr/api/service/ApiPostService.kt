@@ -5,9 +5,10 @@ import com.fatdino.blabrrr.api.model.responds.BaseResp
 import com.fatdino.blabrrr.api.model.responds.PostListResp
 import com.fatdino.blabrrr.api.model.responds.PostResp
 import io.reactivex.rxjava3.core.Observable
+import java.io.File
 
 interface ApiPostService {
-    fun doPost(username: String, body: String, image: ByteArray?): Observable<PostResp>
+    fun doPost(username: String, body: String, image: File?): Observable<PostResp>
     fun getLivePosts(): Observable<PostResp>
 
     //TODO: paging

@@ -1,11 +1,13 @@
 package com.fatdino.blabrrr.api.service.firebase
 
+import android.net.Uri
 import android.util.Log
 import com.fatdino.blabrrr.api.model.Post
 import com.fatdino.blabrrr.api.model.responds.BaseResp
 import com.fatdino.blabrrr.api.model.responds.PostListResp
 import com.fatdino.blabrrr.api.model.responds.PostResp
 import com.fatdino.blabrrr.api.service.ApiPostService
+import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -13,8 +15,10 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.ObservableEmitter
+import java.io.File
 
 
 class FirebasePostService : ApiPostService {
@@ -25,10 +29,9 @@ class FirebasePostService : ApiPostService {
 
     }
 
-    override fun doPost(username: String, body: String, image: ByteArray?): Observable<PostResp> {
+    override fun doPost(username: String, body: String, image: File?): Observable<PostResp> {
         return Observable.create {
             val reference = Firebase.database.reference
-
             val key = reference.child(POST_PATH).push().key
             if (key == null) {
                 it.onNext(PostResp("Couldn't get push key for posts"))
@@ -36,19 +39,49 @@ class FirebasePostService : ApiPostService {
                 return@create
             }
 
-            val post = Post(key, username, body)
+            //upload image
+            if (image != null) {
+                val storage = Firebase.storage
+                val storageRef = storage.reference
+                val file = Uri.fromFile(image)
+                val riversRef = storageRef.child("images/${file.lastPathSegment}")
+                riversRef.putFile(file)
+                    .addOnSuccessListener { taskSnapshot ->
+                        taskSnapshot.storage.downloadUrl.addOnSuccessListener { uri ->
+                            val imageUrl = uri.toString()
+                            Log.d(javaClass.simpleName, "Uploaded image to $imageUrl")
+                            doPost(key, username, body, imageUrl, it)
+                        }
+                    }.addOnFailureListener(OnFailureListener { e ->
+                        Log.e(javaClass.simpleName, "Upload image failed $e")
+                        doPost(key, username, body, "", it)
+                    })
+            } else {
+                doPost(key, username, body, "", it)
+            }
+        }
+    }
 
-            val updates = hashMapOf<String, Any>(
-                "/$POST_PATH/$key" to post,
-                "/$USER_POST_PATH/$username/$key" to post
-            )
-            reference.updateChildren(updates) { error, _ ->
-                if (error == null) {
-                    fetchPost(key, it)
-                } else {
-                    it.onNext(PostResp(error.message))
-                    it.onComplete()
-                }
+    private fun doPost(
+        key: String,
+        username: String,
+        body: String,
+        filePath: String,
+        emitter: ObservableEmitter<PostResp>
+    ) {
+        val post = Post(key = key, username = username, body = body, filePath = filePath)
+
+        val updates = hashMapOf<String, Any>(
+            "/$POST_PATH/$key" to post,
+            "/$USER_POST_PATH/$username/$key" to post
+        )
+        val reference = Firebase.database.reference
+        reference.updateChildren(updates) { error, _ ->
+            if (error == null) {
+                fetchPost(key, emitter)
+            } else {
+                emitter.onNext(PostResp(error.message))
+                emitter.onComplete()
             }
         }
     }

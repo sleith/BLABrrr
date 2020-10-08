@@ -9,5 +9,6 @@ data class Post(
     val key: String = "",
     val username: String = "",
     val body: String = "",
+    val filePath: String = "",
     val createdDate: Long = System.currentTimeMillis()
 )

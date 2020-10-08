@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.fatdino.blabrrr.R
+import com.fatdino.blabrrr.api.model.Post
 import com.fatdino.blabrrr.api.model.User
 import java.io.File
 
@@ -48,6 +49,14 @@ fun setImageUser(view: ImageView, user: User?) {
     //TODO: set with image url
     Glide.with(view).load(user?.name).placeholder(R.drawable.ic_logo)
         .error(R.drawable.ic_logo).into(view)
+}
 
-
+@BindingAdapter("postImage")
+fun setImagePost(view: ImageView, post: Post) {
+    if (post.filePath.isNullOrEmpty()) {
+        view.visibility = View.GONE
+    } else {
+        view.visibility = View.VISIBLE
+        Glide.with(view).load(post.filePath).into(view)
+    }
 }
