@@ -26,7 +26,7 @@ class LoginActivityViewModel : BaseViewModel() {
     var callbackLogin: MutableLiveData<User?> = MutableLiveData()
 
     override fun start(owner: LifecycleOwner) {
-
+        username.value = myPreferences.username
     }
 
     fun doLogin() {

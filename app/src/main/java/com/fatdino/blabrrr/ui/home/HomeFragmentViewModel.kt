@@ -1,6 +1,5 @@
 package com.fatdino.blabrrr.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import com.fatdino.blabrrr.api.model.Post
@@ -8,7 +7,6 @@ import com.fatdino.blabrrr.api.model.User
 import com.fatdino.blabrrr.api.service.ApiPostService
 import com.fatdino.blabrrr.storage.MySharedPreferences
 import com.fatdino.blabrrr.ui.BaseViewModel
-import com.google.gson.Gson
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -36,9 +34,6 @@ class HomeFragmentViewModel : BaseViewModel() {
 
             }.subscribe {
                 if (it.isSuccessful) {
-                    val gson = Gson()
-                    Log.e(javaClass.simpleName, "@@ post update : " + gson.toJson(it))
-
                     it.post?.let { post ->
                         when {
                             it.isNew -> {
@@ -52,7 +47,6 @@ class HomeFragmentViewModel : BaseViewModel() {
                             }
                         }
                     }
-
                 } else {
                     errorMessage.value = it.description
                 }

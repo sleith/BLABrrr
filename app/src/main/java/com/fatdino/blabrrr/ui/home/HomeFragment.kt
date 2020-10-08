@@ -1,12 +1,13 @@
 package com.fatdino.blabrrr.ui.home
 
+import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import com.fatdino.blabrrr.injection.module.StorageModule
 import com.fatdino.blabrrr.ui.BaseFragment
 import com.fatdino.blabrrr.ui.BaseViewModel
 import com.fatdino.blabrrr.ui.home.adapter.HomePostAdapter
+import com.fatdino.blabrrr.ui.myposts.MyPostActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment() {
@@ -55,12 +57,23 @@ class HomeFragment : BaseFragment() {
             recyclerView.context,
             DividerItemDecoration.VERTICAL
         )
+        dividerItemDecoration.setDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.divider
+                )
+            )
+        )
         recyclerView.addItemDecoration(dividerItemDecoration)
+
+        ivAvatar.setOnClickListener {
+            startActivity(Intent(requireContext(), MyPostActivity::class.java))
+        }
     }
 
     override fun setupObservers() {
-        viewModel.posts.observe(this, Observer {
-            Log.e(javaClass.simpleName, "setupObservers posts changes!")
+        viewModel.posts.observe(this, {
             mAdapter.notifyDataSetChanged()
         })
     }

@@ -1,7 +1,6 @@
 package com.fatdino.blabrrr.ui.home.adapter
 
 import android.app.Activity
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,7 +9,7 @@ import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.api.model.Post
 import com.fatdino.blabrrr.databinding.ItemHomePostBinding
 
-class HomePostAdapter(val activity: Activity, val postList: List<Post>) :
+class HomePostAdapter(val activity: Activity, private val postList: List<Post>) :
     RecyclerView.Adapter<HomePostAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,7 +27,6 @@ class HomePostAdapter(val activity: Activity, val postList: List<Post>) :
     }
 
     override fun getItemCount(): Int {
-        Log.e(javaClass.simpleName, "getItemCount ${postList.size}")
         return postList.size
     }
 

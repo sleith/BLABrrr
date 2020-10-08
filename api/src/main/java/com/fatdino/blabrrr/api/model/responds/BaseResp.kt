@@ -11,4 +11,9 @@ open class BaseResp {
     constructor() {
         isSuccessful = true
     }
+
+    constructor(error: String) {
+        isSuccessful = false
+        description = error
+    }
 }

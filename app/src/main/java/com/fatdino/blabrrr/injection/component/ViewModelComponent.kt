@@ -5,6 +5,7 @@ import com.fatdino.blabrrr.injection.module.StorageModule
 import com.fatdino.blabrrr.ui.home.HomeFragmentViewModel
 import com.fatdino.blabrrr.ui.landing.LandingActivityViewModel
 import com.fatdino.blabrrr.ui.login.LoginActivityViewModel
+import com.fatdino.blabrrr.ui.myposts.MyPostActivityViewModel
 import com.fatdino.blabrrr.ui.post.PostActivityViewModel
 import com.fatdino.blabrrr.ui.signup.SignUpStep1ViewModel
 import com.fatdino.blabrrr.ui.signup.SignUpStep2ViewModel
@@ -22,5 +23,5 @@ interface ViewModelComponent {
     fun inject(viewModel: SignUpStep2ViewModel)
     fun inject(viewModel: PostActivityViewModel)
     fun inject(viewModel: HomeFragmentViewModel)
-
+    fun inject(viewModel: MyPostActivityViewModel)
 }
