@@ -26,6 +26,7 @@ class FirebasePostService : ApiPostService {
     companion object {
         const val POST_PATH = "posts"
         const val USER_POST_PATH = "user-posts"
+        const val IMAGE_PATH = "images"
 
     }
 
@@ -44,8 +45,8 @@ class FirebasePostService : ApiPostService {
                 val storage = Firebase.storage
                 val storageRef = storage.reference
                 val file = Uri.fromFile(image)
-                val riversRef = storageRef.child("images/${file.lastPathSegment}")
-                riversRef.putFile(file)
+                val pathRef = storageRef.child("$IMAGE_PATH/$key")
+                pathRef.putFile(file)
                     .addOnSuccessListener { taskSnapshot ->
                         taskSnapshot.storage.downloadUrl.addOnSuccessListener { uri ->
                             val imageUrl = uri.toString()
@@ -165,6 +166,15 @@ class FirebasePostService : ApiPostService {
             )
             reference.updateChildren(updates) { error, _ ->
                 if (error == null) {
+                    //delete file
+                    if (post.filePath.isNotEmpty()) {
+                        val storage = Firebase.storage
+                        val storageRef = storage.reference
+                        val pathRef = storageRef.child("$IMAGE_PATH/$key")
+                        //TODO: improve this to make sure file successfully delete
+                        pathRef.delete()
+                    }
+
                     it.onNext(BaseResp())
                     it.onComplete()
                 } else {
