@@ -164,6 +164,7 @@ class FirebasePostService : ApiPostService {
                 "/$POST_PATH/$key" to null,
                 "/$USER_POST_PATH/$username/$key" to null
             )
+
             reference.updateChildren(updates) { error, _ ->
                 if (error == null) {
                     //delete file

@@ -20,6 +20,7 @@ class MyPostActivityViewModel : BaseViewModel() {
     lateinit var myPreferences: MySharedPreferences
 
     var posts: MutableLiveData<ArrayList<Post>> = MutableLiveData(ArrayList())
+    var noPostVisibilityBoolean: MutableLiveData<Boolean> = MutableLiveData(false)
 
     var callbackLogoutSuccess: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -44,6 +45,8 @@ class MyPostActivityViewModel : BaseViewModel() {
                         postList.addAll(it.posts)
                         posts.value = postList
                     }
+
+                    noPostVisibilityBoolean.value = posts.value.isNullOrEmpty()
                 } else {
                     errorMessage.value = it.description
                 }

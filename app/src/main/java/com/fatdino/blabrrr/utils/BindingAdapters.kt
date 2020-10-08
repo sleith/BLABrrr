@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.Glide
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.api.model.Post
@@ -58,5 +59,15 @@ fun setImagePost(view: ImageView, post: Post) {
     } else {
         view.visibility = View.VISIBLE
         Glide.with(view).load(post.filePath).into(view)
+    }
+}
+
+@BindingAdapter("mutableVisibilityBoolean")
+fun setMutableVisibilityBoolean(view: View, isVisible: MutableLiveData<Boolean>) {
+    val parentActivity = view.getParentActivity()
+    parentActivity?.let { activity ->
+        isVisible.observe(activity, {
+            view.visibility = if (it) View.VISIBLE else View.GONE
+        })
     }
 }

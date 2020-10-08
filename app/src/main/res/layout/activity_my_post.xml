@@ -44,6 +44,15 @@
 
         <View style="@style/Divider" />
 
+        <TextView
+            style="@style/TextWhite.Bold"
+            mutableVisibilityBoolean="@{viewModel.noPostVisibilityBoolean}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_big2"
+            android:gravity="center_horizontal"
+            android:text="@string/mypost_empty" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
