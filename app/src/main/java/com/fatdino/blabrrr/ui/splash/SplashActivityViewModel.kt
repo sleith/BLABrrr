@@ -40,7 +40,7 @@ class SplashActivityViewModel : BaseViewModel() {
         }
     }
 
-    fun doLogin(username: String, password: String) {
+    private fun doLogin(username: String, password: String) {
         subscription.add(
             userService.doLogin(
                 username, password
