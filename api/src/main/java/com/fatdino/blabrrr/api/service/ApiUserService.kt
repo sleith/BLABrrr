@@ -15,4 +15,6 @@ interface ApiUserService {
     ): Observable<UserResp>
 
     fun doLogin(username: String, password: String): Observable<UserResp>
+
+    fun getUser(username: String): Observable<UserResp>
 }

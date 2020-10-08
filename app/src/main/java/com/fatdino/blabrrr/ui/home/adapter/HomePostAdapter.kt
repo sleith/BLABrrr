@@ -7,9 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.api.model.Post
+import com.fatdino.blabrrr.api.model.User
 import com.fatdino.blabrrr.databinding.ItemHomePostBinding
 
-class HomePostAdapter(val activity: Activity, private val postList: List<Post>) :
+class HomePostAdapter(
+    val activity: Activity,
+    private val postList: List<Post>,
+    private val userMap: HashMap<String, User>
+) :
     RecyclerView.Adapter<HomePostAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +40,7 @@ class HomePostAdapter(val activity: Activity, private val postList: List<Post>) 
         private val viewModel = HomePostAdapterViewModel()
 
         fun bind(post: Post) {
-            viewModel.bind(post)
+            viewModel.bind(post, userMap[post.username])
             binding.viewModel = viewModel
         }
     }

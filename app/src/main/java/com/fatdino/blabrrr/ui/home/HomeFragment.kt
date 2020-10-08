@@ -49,7 +49,11 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun setupViews() {
-        mAdapter = HomePostAdapter(requireActivity(), viewModel.posts.value ?: ArrayList())
+        mAdapter = HomePostAdapter(
+            requireActivity(),
+            viewModel.posts.value ?: ArrayList(),
+            viewModel.userMapList.value ?: HashMap()
+        )
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -74,6 +78,9 @@ class HomeFragment : BaseFragment() {
 
     override fun setupObservers() {
         viewModel.posts.observe(this, {
+            mAdapter.notifyDataSetChanged()
+        })
+        viewModel.userMapList.observe(this, {
             mAdapter.notifyDataSetChanged()
         })
     }

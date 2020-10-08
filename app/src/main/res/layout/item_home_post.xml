@@ -15,6 +15,7 @@
         android:padding="@dimen/padding">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            avatarUser="@{viewModel.user}"
             android:layout_width="@dimen/user_image_smaller"
             android:layout_height="@dimen/user_image_smaller"
             android:layout_marginRight="@dimen/padding"

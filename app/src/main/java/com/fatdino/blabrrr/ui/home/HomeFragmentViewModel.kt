@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.fatdino.blabrrr.api.model.Post
 import com.fatdino.blabrrr.api.model.User
 import com.fatdino.blabrrr.api.service.ApiPostService
+import com.fatdino.blabrrr.api.service.ApiUserService
 import com.fatdino.blabrrr.storage.MySharedPreferences
 import com.fatdino.blabrrr.ui.BaseViewModel
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -16,10 +17,16 @@ class HomeFragmentViewModel : BaseViewModel() {
     lateinit var postService: ApiPostService
 
     @Inject
+    lateinit var userService: ApiUserService
+
+    @Inject
     lateinit var myPreferences: MySharedPreferences
 
     var user: MutableLiveData<User?> = MutableLiveData()
     var posts: MutableLiveData<ArrayList<Post>> = MutableLiveData(ArrayList())
+    var userMapList: MutableLiveData<HashMap<String, User>> = MutableLiveData(HashMap())
+
+    private var userFetchProgressMapping: HashMap<String, Boolean> = HashMap()
 
     override fun start(owner: LifecycleOwner) {
         user.value = myPreferences.getUser()
@@ -53,10 +60,38 @@ class HomeFragmentViewModel : BaseViewModel() {
             })
     }
 
+    private fun fetchUser(username: String) {
+        if (userFetchProgressMapping[username] != null) {
+            return
+        }
+
+        userFetchProgressMapping[username] = true
+        subscription.add(userService.getUser(username = username)
+            .subscribeOn(Schedulers.io())
+            .observeOn(
+                Schedulers.io()
+            ).doOnSubscribe {
+            }.doOnTerminate {
+            }.doOnError {
+
+            }.subscribe {
+                if (it.isSuccessful) {
+                    it.user?.let { user ->
+                        userMapList.value?.let { map ->
+                            map[username] = user
+                            userMapList.postValue(map)
+                        }
+                    }
+                }
+            })
+    }
+
     private fun addNewPost(post: Post) {
         posts.value?.let {
             it.add(0, post)
             posts.postValue(it)
+
+            fetchUser(post.username)
         }
     }
 

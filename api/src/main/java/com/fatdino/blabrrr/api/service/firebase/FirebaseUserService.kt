@@ -147,6 +147,12 @@ class FirebaseUserService() : ApiUserService {
         }
     }
 
+    override fun getUser(username: String): Observable<UserResp> {
+        return Observable.create {
+            fetchUserResp(username = username, emitter = it)
+        }
+    }
+
     private fun fetchUserResp(username: String, emitter: ObservableEmitter<UserResp>) {
         val reference = Firebase.database.reference
         reference.child(USER_PATH).child(username).addListenerForSingleValueEvent(object :
