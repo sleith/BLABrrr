@@ -4,6 +4,7 @@ import android.net.Uri
 import android.util.Log
 import com.fatdino.blabrrr.api.extensions.toMD5
 import com.fatdino.blabrrr.api.model.User
+import com.fatdino.blabrrr.api.model.responds.BaseResp
 import com.fatdino.blabrrr.api.model.responds.CheckUsernameAvailabilityResp
 import com.fatdino.blabrrr.api.model.responds.UserResp
 import com.fatdino.blabrrr.api.service.ApiUserService
@@ -20,7 +21,7 @@ import io.reactivex.rxjava3.core.ObservableEmitter
 import java.io.File
 
 
-class FirebaseUserService() : ApiUserService {
+class FirebaseUserService : ApiUserService {
 
     companion object {
         const val USER_PATH = "users"
@@ -150,6 +151,28 @@ class FirebaseUserService() : ApiUserService {
     override fun getUser(username: String): Observable<UserResp> {
         return Observable.create {
             fetchUserResp(username = username, emitter = it)
+        }
+    }
+
+    override fun deleteUser(username: String): Observable<BaseResp> {
+        return Observable.create {
+            val reference = Firebase.database.reference
+
+            val updates = hashMapOf<String, Any?>(
+                "/${USER_PATH}/$username" to null,
+                "/${PASSWORD_PATH}/$username" to null,
+                "/${FirebasePostService.USER_POST_PATH}/$username" to null
+            )
+
+            reference.updateChildren(updates) { error, _ ->
+                if (error == null) {
+                    it.onNext(BaseResp())
+                    it.onComplete()
+                } else {
+                    it.onNext(BaseResp(error = error.message))
+                    it.onComplete()
+                }
+            }
         }
     }
 

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "234615493217",
+    "firebase_url": "https://blabrrr-6df67.firebaseio.com",
+    "project_id": "blabrrr-6df67",
+    "storage_bucket": "blabrrr-6df67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234615493217:android:4b76f60672286852e95020",
+        "android_client_info": {
+          "package_name": "com.fatdino.blabrrr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234615493217-bjt1voa65uabq7iesf41erfrcd1em0ob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJSH2f8DW2Rs_uTL13aS-7hLZQUkKJKB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234615493217-bjt1voa65uabq7iesf41erfrcd1em0ob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234615493217:android:89cdf49fc77cc298e95020",
+        "android_client_info": {
+          "package_name": "com.fatdino.blabrrr.api"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234615493217-bjt1voa65uabq7iesf41erfrcd1em0ob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJSH2f8DW2Rs_uTL13aS-7hLZQUkKJKB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234615493217-bjt1voa65uabq7iesf41erfrcd1em0ob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

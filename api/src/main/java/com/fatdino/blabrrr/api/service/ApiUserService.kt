@@ -1,5 +1,6 @@
 package com.fatdino.blabrrr.api.service
 
+import com.fatdino.blabrrr.api.model.responds.BaseResp
 import com.fatdino.blabrrr.api.model.responds.CheckUsernameAvailabilityResp
 import com.fatdino.blabrrr.api.model.responds.UserResp
 import io.reactivex.rxjava3.core.Observable
@@ -17,4 +18,6 @@ interface ApiUserService {
     fun doLogin(username: String, password: String): Observable<UserResp>
 
     fun getUser(username: String): Observable<UserResp>
+
+    fun deleteUser(username: String): Observable<BaseResp>
 }
