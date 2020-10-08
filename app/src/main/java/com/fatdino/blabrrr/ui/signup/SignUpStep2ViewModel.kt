@@ -46,7 +46,7 @@ class SignUpStep2ViewModel : BaseViewModel() {
                 username.value ?: "",
                 name.value ?: "",
                 password.value ?: "",
-                null
+                imageFile.value
             ).subscribeOn(Schedulers.io())
                 .observeOn(
                     AndroidSchedulers.mainThread()

@@ -47,8 +47,7 @@ fun setImageFileHideIfNull(view: ImageView, file: File?) {
 
 @BindingAdapter("avatarUser")
 fun setImageUser(view: ImageView, user: User?) {
-    //TODO: set with image url
-    Glide.with(view).load(user?.name).placeholder(R.drawable.ic_logo)
+    Glide.with(view).load(user?.avatar).placeholder(R.drawable.ic_logo)
         .error(R.drawable.ic_logo).into(view)
 }
 
