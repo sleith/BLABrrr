@@ -30,6 +30,10 @@ class InboxFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun setupViews() {
+
+    }
+
     override fun setupObservers() {
 
     }

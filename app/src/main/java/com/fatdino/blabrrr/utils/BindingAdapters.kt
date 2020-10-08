@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.fatdino.blabrrr.R
+import com.fatdino.blabrrr.api.model.User
 import java.io.File
 
 fun View.getParentActivity(): AppCompatActivity? {
@@ -40,4 +41,13 @@ fun setImageFileHideIfNull(view: ImageView, file: File?) {
     } else {
         view.visibility = View.GONE
     }
+}
+
+@BindingAdapter("avatarUser")
+fun setImageUser(view: ImageView, user: User?) {
+    //TODO: set with image url
+    Glide.with(view).load(user?.name).placeholder(R.drawable.ic_logo)
+        .error(R.drawable.ic_logo).into(view)
+
+
 }

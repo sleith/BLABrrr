@@ -34,6 +34,7 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupViews()
         setupObservers()
         mViewModel.start(this)
     }
@@ -47,6 +48,8 @@ abstract class BaseFragment : Fragment() {
         builder.setPositiveButton(getString(R.string.OK), null)
         builder.create().show()
     }
+
+    abstract fun setupViews()
 
     abstract fun setupObservers()
 

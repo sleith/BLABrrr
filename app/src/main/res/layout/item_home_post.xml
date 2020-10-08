@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.fatdino.blabrrr.ui.home.adapter.HomePostAdapterViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/logo_text_bar_width"
+            android:layout_height="@dimen/logo_text_bar_height"
+            android:layout_marginRight="@dimen/padding"
+            android:src="@drawable/ic_logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextWhite.Bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.author}" />
+
+            <TextView
+                style="@style/TextWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:text="@{viewModel.body}" />
+
+            <TextView
+                style="@style/TextDarkGray.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:text="@{`Posted ` + viewModel.createdDate}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

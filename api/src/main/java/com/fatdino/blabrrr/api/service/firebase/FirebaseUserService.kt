@@ -57,7 +57,7 @@ class FirebaseUserService() : ApiUserService {
             )
             reference.updateChildren(updates) { error, _ ->
                 if (error != null) {
-                    it.onNext(UserResp(error.message))
+                    it.onNext(UserResp(error = error.message))
                     it.onComplete()
                 } else {
                     fetchUserResp(username, it)
@@ -80,17 +80,17 @@ class FirebaseUserService() : ApiUserService {
                         if (hashedPasswordFromServer == hashedPassword) {
                             fetchUserResp(username, it)
                         } else {
-                            it.onNext(UserResp("Incorrect password"))
+                            it.onNext(UserResp(error = "Incorrect password"))
                             it.onComplete()
                         }
                     } else {
-                        it.onNext(UserResp("User is not existed"))
+                        it.onNext(UserResp(error = "User is not existed"))
                         it.onComplete()
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    it.onNext(UserResp(error.message))
+                    it.onNext(UserResp(error = error.message))
                     it.onComplete()
                 }
             })
@@ -106,13 +106,13 @@ class FirebaseUserService() : ApiUserService {
                     val user = snapshot.getValue<User>()
                     emitter.onNext(UserResp(user))
                 } else {
-                    emitter.onNext(UserResp("User is not exists"))
+                    emitter.onNext(UserResp(error = "User is not exists"))
                 }
                 emitter.onComplete()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                emitter.onNext(UserResp(error.message))
+                emitter.onNext(UserResp(error = error.message))
                 emitter.onComplete()
             }
         })

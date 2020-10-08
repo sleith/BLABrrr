@@ -5,4 +5,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface ApiPostService {
     fun doPost(username: String, body: String, image: ByteArray?): Observable<PostResp>
+    fun getLivePosts(): Observable<PostResp>
 }

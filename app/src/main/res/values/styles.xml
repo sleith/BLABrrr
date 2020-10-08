@@ -16,6 +16,10 @@
         <item name="android:textColor">#ffffff</item>
     </style>
 
+    <style name="TextWhite.Bold">
+        <item name="fontPath">@string/fontBold</item>
+    </style>
+
     <style name="TextWhite.Big">
         <item name="android:textSize">@dimen/text_big</item>
     </style>
@@ -38,6 +42,14 @@
 
     <style name="TextPrimary.Big3">
         <item name="android:textSize">@dimen/text_big3</item>
+    </style>
+
+    <style name="TextDarkGray">
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="TextDarkGray.Small">
+        <item name="android:textSize">@dimen/text_small</item>
     </style>
 
     <style name="ButtonPrimary">

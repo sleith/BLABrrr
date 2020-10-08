@@ -8,21 +8,43 @@
             type="com.fatdino.blabrrr.ui.home.HomeFragmentViewModel" />
     </data>
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black"
         android:orientation="vertical"
         android:paddingBottom="10dp"
         tools:context=".ui.home.HomeFragment">
 
-        <TextView
-            android:id="@+id/text_home"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Hallooo"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_margin="@dimen/padding"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/ImageLogoText"
+                android:layout_width="@dimen/logo_text_bar_width"
+                android:layout_height="@dimen/logo_text_bar_height" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                avatarUser="@{viewModel.user}"
+                android:layout_width="@dimen/user_image_small"
+                android:layout_height="@dimen/user_image_small" />
+        </LinearLayout>
+
+        <View style="@style/Divider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/padding" />
     </LinearLayout>
 </layout>

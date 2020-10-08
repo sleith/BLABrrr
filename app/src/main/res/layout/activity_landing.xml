@@ -22,8 +22,8 @@
             android:padding="@dimen/padding_big">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/user_image_small"
+                android:layout_height="@dimen/user_image_small"
                 android:src="@drawable/ic_logo" />
 
             <TextView
