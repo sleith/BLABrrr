@@ -47,4 +47,7 @@
     <string name="mypost_delete_confirmation_message">この投稿を削除してもよろしいですか?</string>
     <string name="mypost_empty">まだ投稿はありません</string>
 
+    <!-- MainActivity -->
+    <string name="main_back_press_confirmation">このアプリを非表示にするには、もう一度クリックします</string>
+
 </resources>

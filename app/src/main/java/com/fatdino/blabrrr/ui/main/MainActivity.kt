@@ -1,6 +1,7 @@
 package com.fatdino.blabrrr.ui.main
 
 import android.content.Intent
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -34,8 +35,22 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun setupObservers() {
+    override fun onBackPressed() {
+        viewModel.backPressed()
+    }
 
+    override fun setupObservers() {
+        viewModel.callbackMoveAppToBg.observe(this, {
+            if (it) {
+                moveTaskToBack(true)
+            } else {
+                Toast.makeText(
+                    this,
+                    getString(R.string.main_back_press_confirmation),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        })
     }
 
     override fun getViewModel(): BaseViewModel {

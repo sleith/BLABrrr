@@ -54,4 +54,7 @@
     <string name="mypost_delete_confirmation_message">Are you sure to delete this post?</string>
     <string name="mypost_empty">No any post yet</string>
 
+    <!-- MainActivity -->
+    <string name="main_back_press_confirmation">Click again to hide this app</string>
+
 </resources>
