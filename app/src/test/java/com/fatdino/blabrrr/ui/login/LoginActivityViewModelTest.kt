@@ -6,6 +6,7 @@ import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.api.model.User
 import com.fatdino.blabrrr.api.model.responds.UserResp
 import com.fatdino.blabrrr.api.service.ApiUserService
+import com.fatdino.blabrrr.rules.MainCoroutineRule
 import com.fatdino.blabrrr.rules.RxImmediateSchedulerRule
 import com.fatdino.blabrrr.storage.MySharedPreferences
 import com.nhaarman.mockitokotlin2.any
@@ -35,6 +36,9 @@ class LoginActivityViewModelTest {
     @Rule
     @JvmField
     var testSchedulerRule = RxImmediateSchedulerRule()
+
+    @get:Rule
+    val coroutineRule = MainCoroutineRule()
 
     @Mock
     lateinit var apiUserService: ApiUserService

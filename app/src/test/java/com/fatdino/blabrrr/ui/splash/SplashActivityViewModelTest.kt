@@ -78,8 +78,6 @@ class SplashActivityViewModelTest {
 
     @Test
     fun start_autoLogin_error() {
-        val user = User("ray", "raymond", "")
-
         Mockito.`when`(myPreferences.username).thenReturn("ray")
         Mockito.`when`(myPreferences.password).thenReturn("haha")
 
