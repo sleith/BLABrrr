@@ -30,7 +30,7 @@ After gradle finished sync the proect, you should be able to run the 'app' modul
 * [Glide](https://github.com/bumptech/glide) - image loading framework
 * [EasyImage](https://github.com/jkwiecien/EasyImage) - easily capture images and videos from the gallery, camera or documents
 * [Android Image cropper](https://github.com/ArthurHub/Android-Image-Cropper) - powerful yet simple image cropping library
-* [Calligraphy](httpshttps://github.com/InflationX/Calligraphy) - custom fonts
+* [Calligraphy](https://github.com/InflationX/Calligraphy) - custom fonts
 * [CircleImageView](https://github.com/hdodenhof/CircleImageView) - a fast circular ImageView
 
 License
