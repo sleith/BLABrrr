@@ -1,0 +1,3 @@
+package com.fatdino.blabrrr.ui.notifications
+
+class NotificationsFragmentViewModelTest
