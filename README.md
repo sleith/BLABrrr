@@ -2,6 +2,8 @@
  
 BLABrrr is my sample app that does functions like twitter (mini twitter)
 
+<img src="https://www.fatdino.com/gifs/blabrrr.gif" alt="BipBipp" />
+
 # Features
   - Login
   - Register
