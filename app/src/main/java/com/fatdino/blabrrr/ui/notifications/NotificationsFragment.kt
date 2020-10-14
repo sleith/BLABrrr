@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.FragmentNotificationsBinding
+import com.fatdino.blabrrr.injection.component.AppComponent
 import com.fatdino.blabrrr.ui.BaseFragment
 import com.fatdino.blabrrr.ui.BaseViewModel
 
@@ -40,6 +41,10 @@ class NotificationsFragment : BaseFragment() {
 
     override fun getViewModel(): BaseViewModel {
         return ViewModelProvider(this).get(NotificationsFragmentViewModel::class.java)
+    }
+
+    override fun injectAppComponent(appComponent: AppComponent) {
+        appComponent.inject(viewModel)
     }
 
 }

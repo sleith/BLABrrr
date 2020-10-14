@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.FragmentInboxBinding
+import com.fatdino.blabrrr.injection.component.AppComponent
 import com.fatdino.blabrrr.ui.BaseFragment
 import com.fatdino.blabrrr.ui.BaseViewModel
 
@@ -42,5 +43,8 @@ class InboxFragment : BaseFragment() {
         return ViewModelProvider(this).get(InboxFragmentViewModel::class.java)
     }
 
+    override fun injectAppComponent(appComponent: AppComponent) {
+        appComponent.inject(viewModel)
+    }
 
 }

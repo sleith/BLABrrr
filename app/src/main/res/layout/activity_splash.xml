@@ -16,6 +16,7 @@
         android:background="@color/black">
 
         <ImageView
+            android:id="@+id/ivBrand"
             android:layout_width="0dp"
             android:layout_height="@dimen/splash_logo_height"
             android:src="@drawable/ic_brand"

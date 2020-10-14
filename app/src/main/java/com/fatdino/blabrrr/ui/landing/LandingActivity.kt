@@ -5,9 +5,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.ActivityLandingBinding
-import com.fatdino.blabrrr.injection.component.DaggerViewModelComponent
-import com.fatdino.blabrrr.injection.module.ServiceModule
-import com.fatdino.blabrrr.injection.module.StorageModule
+import com.fatdino.blabrrr.injection.component.AppComponent
 import com.fatdino.blabrrr.ui.BaseActivity
 import com.fatdino.blabrrr.ui.BaseViewModel
 import com.fatdino.blabrrr.ui.login.LoginActivity
@@ -25,12 +23,6 @@ class LandingActivity : BaseActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val injector =
-            DaggerViewModelComponent.builder().serviceModule(ServiceModule()).storageModule(
-                StorageModule(this)
-            ).build()
-        injector.inject(viewModel)
-
         btnSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpStep1Activity::class.java))
         }
@@ -46,6 +38,10 @@ class LandingActivity : BaseActivity() {
 
     override fun getViewModel(): BaseViewModel {
         return ViewModelProvider(this).get(LandingActivityViewModel::class.java)
+    }
+
+    override fun injectAppComponent(appComponent: AppComponent) {
+        appComponent.inject(viewModel)
     }
 
     override fun onBackPressed() {

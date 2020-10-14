@@ -8,6 +8,7 @@ buildscript {
     ext.circleimageview_version = '3.1.0'
     ext.glide_version = '4.11.0'
     ext.easyimage_version = '3.0.3'
+    ext.espresso_version = '3.3.0'
 
     repositories {
         google()

@@ -7,11 +7,11 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class StorageModule(private val context: Context) {
+open class StorageModule(val context: Context) {
 
     @Provides
     @Singleton
-    fun providesPreferences(): MySharedPreferences {
+    open fun providesPreferences(): MySharedPreferences {
         return MySharedPreferences(context)
     }
 }

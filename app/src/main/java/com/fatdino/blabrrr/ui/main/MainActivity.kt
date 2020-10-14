@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.ActivityMainBinding
+import com.fatdino.blabrrr.injection.component.AppComponent
 import com.fatdino.blabrrr.ui.BaseActivity
 import com.fatdino.blabrrr.ui.BaseViewModel
 import com.fatdino.blabrrr.ui.post.PostActivity
@@ -55,5 +56,9 @@ class MainActivity : BaseActivity() {
 
     override fun getViewModel(): BaseViewModel {
         return ViewModelProvider(this).get(MainActivityViewModel::class.java)
+    }
+
+    override fun injectAppComponent(appComponent: AppComponent) {
+        appComponent.inject(viewModel)
     }
 }

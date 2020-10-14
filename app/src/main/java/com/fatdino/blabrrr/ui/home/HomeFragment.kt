@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.databinding.FragmentHomeBinding
-import com.fatdino.blabrrr.injection.component.DaggerViewModelComponent
-import com.fatdino.blabrrr.injection.module.ServiceModule
-import com.fatdino.blabrrr.injection.module.StorageModule
+import com.fatdino.blabrrr.injection.component.AppComponent
 import com.fatdino.blabrrr.ui.BaseFragment
 import com.fatdino.blabrrr.ui.BaseViewModel
 import com.fatdino.blabrrr.ui.home.adapter.HomePostAdapter
@@ -38,12 +36,6 @@ class HomeFragment : BaseFragment() {
         )
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
-        val injector =
-            DaggerViewModelComponent.builder().serviceModule(ServiceModule()).storageModule(
-                StorageModule(requireContext())
-            ).build()
-        injector.inject(viewModel)
 
         return binding.root
     }
@@ -87,6 +79,10 @@ class HomeFragment : BaseFragment() {
 
     override fun getViewModel(): BaseViewModel {
         return ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
+    }
+
+    override fun injectAppComponent(appComponent: AppComponent) {
+        appComponent.inject(viewModel)
     }
 
 }

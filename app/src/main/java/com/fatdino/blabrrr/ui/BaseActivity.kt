@@ -6,7 +6,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.fatdino.blabrrr.MyApplication
 import com.fatdino.blabrrr.R
+import com.fatdino.blabrrr.injection.component.AppComponent
 import com.fatdino.blabrrr.utils.DialogLoading
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
@@ -46,6 +48,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         setupViews()
         setupObservers()
+        injectAppComponent(appComponent())
         mViewModel.start(this)
     }
 
@@ -89,10 +92,16 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    fun appComponent(): AppComponent {
+        return (application as MyApplication).appComponent
+    }
+
     abstract fun setupViews()
 
     abstract fun setupObservers()
 
     abstract fun getViewModel(): BaseViewModel
+
+    abstract fun injectAppComponent(appComponent: AppComponent)
 
 }

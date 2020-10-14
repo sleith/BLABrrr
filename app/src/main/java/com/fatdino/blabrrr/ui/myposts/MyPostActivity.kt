@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fatdino.blabrrr.R
 import com.fatdino.blabrrr.api.model.Post
 import com.fatdino.blabrrr.databinding.ActivityMyPostBinding
-import com.fatdino.blabrrr.injection.component.DaggerViewModelComponent
-import com.fatdino.blabrrr.injection.module.ServiceModule
-import com.fatdino.blabrrr.injection.module.StorageModule
+import com.fatdino.blabrrr.injection.component.AppComponent
 import com.fatdino.blabrrr.ui.BaseActivity
 import com.fatdino.blabrrr.ui.BaseViewModel
 import com.fatdino.blabrrr.ui.landing.LandingActivity
@@ -32,12 +30,6 @@ class MyPostActivity : BaseActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_my_post)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
-        val injector =
-            DaggerViewModelComponent.builder().serviceModule(ServiceModule()).storageModule(
-                StorageModule(this)
-            ).build()
-        injector.inject(viewModel)
 
         mAdapter = MyPostsAdapter(
             this,
@@ -85,6 +77,10 @@ class MyPostActivity : BaseActivity() {
 
     override fun getViewModel(): BaseViewModel {
         return ViewModelProvider(this).get(MyPostActivityViewModel::class.java)
+    }
+
+    override fun injectAppComponent(appComponent: AppComponent) {
+        appComponent.inject(viewModel)
     }
 
     private fun showDeleteConfirmationDialog(post: Post) {

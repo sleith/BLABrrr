@@ -9,17 +9,17 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class ServiceModule {
+open class ServiceModule {
 
     @Provides
     @Singleton
-    fun firebaseUserService(): ApiUserService {
+    open fun firebaseUserService(): ApiUserService {
         return FirebaseUserService()
     }
 
     @Provides
     @Singleton
-    fun firebasePostService(): ApiPostService {
+    open fun firebasePostService(): ApiPostService {
         return FirebasePostService()
     }
 }

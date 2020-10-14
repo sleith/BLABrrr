@@ -7,5 +7,6 @@
     <color name="black">#15161A</color>
     <color name="dark_gray">#51545A</color>
     <color name="divider">#51545A</color>
+    <color name="white">#ffffff</color>
 
 </resources>
