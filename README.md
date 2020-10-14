@@ -16,9 +16,14 @@ BLABrrr is my sample app that does functions like twitter (mini twitter)
 # Architecture
 MVVM architecture
 
-# Unit tests
+# Unit Tests
 - View Models unit tests
 - Firebase Realtime Database instrumented tests
+
+# UI Tests
+- Login
+- Landing
+- TODO: cover more UI tests
 
 # How to run
 You can simply import this project with Android Studio.
